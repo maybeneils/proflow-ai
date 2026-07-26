@@ -42,8 +42,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden md:block">
-          <Button asChild size="sm">
-            <Link to="/contact">Book a call</Link>
+          <Button asChild>
+            <Link to="/contact">Get Started</Link>
           </Button>
         </div>
 
