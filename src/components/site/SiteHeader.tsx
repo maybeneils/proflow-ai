@@ -15,10 +15,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="bg-accent-gradient flex size-8 items-center justify-center rounded-lg">
+          <span className="flex size-8 items-center justify-center rounded-md bg-primary">
             <Bot className="size-5 text-primary-foreground" />
           </span>
           <span className="font-display text-lg font-semibold tracking-tight">AutomatePro</span>
@@ -30,7 +30,7 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-primary" }}
+              activeProps={{ className: "text-foreground font-semibold" }}
               inactiveProps={{ className: "text-muted-foreground" }}
               className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground"
             >
@@ -56,14 +56,14 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-border/60 bg-background md:hidden">
+        <div className="border-t border-border bg-background md:hidden">
           <nav className="container-page flex flex-col py-3">
             {[...navItems, { to: "/contact", label: "Contact" } as const].map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                activeProps={{ className: "text-primary" }}
+                activeProps={{ className: "text-foreground font-semibold" }}
                 inactiveProps={{ className: "text-muted-foreground" }}
                 className="py-2.5 text-sm font-medium"
                 onClick={() => setOpen(false)}
