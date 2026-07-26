@@ -9,6 +9,7 @@ const navItems = [
   { to: "/process", label: "Process" },
   { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
@@ -41,8 +42,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden md:block">
-          <Button asChild size="sm">
-            <Link to="/contact">Book a call</Link>
+          <Button asChild>
+            <Link to="/contact">Get Started</Link>
           </Button>
         </div>
 
@@ -59,7 +60,7 @@ export function SiteHeader() {
       {open ? (
         <div className="border-t border-border bg-background md:hidden">
           <nav className="container-page flex flex-col py-4">
-            {[...navItems, { to: "/contact", label: "Contact" } as const].map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
@@ -72,6 +73,13 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <div className="pt-4">
+              <Button asChild className="w-full">
+                <Link to="/contact" onClick={() => setOpen(false)}>
+                  Get Started
+                </Link>
+              </Button>
+            </div>
           </nav>
         </div>
       ) : null}
