@@ -43,14 +43,13 @@ const pillars = [
 function Home() {
   return (
     <>
-      <section className="bg-hero-gradient border-b border-border/60">
+      <section className="border-b border-border bg-surface">
         <div className="container-page py-24 md:py-32">
-          <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+          <p className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
             AI Automation Agency
           </p>
           <h1 className="max-w-4xl text-4xl font-bold text-balance md:text-6xl">
-            Put your lead capture, follow-ups, and scheduling{" "}
-            <span className="text-accent-gradient">on autopilot</span>
+            Put your lead capture, follow-ups, and scheduling <span>on autopilot</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
             AutomatePro helps businesses of every kind respond instantly, book more
@@ -74,9 +73,9 @@ function Home() {
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="shadow-card rounded-2xl border border-border/60 bg-card p-7 transition-colors hover:border-primary/50"
+              className="rounded-md border border-border bg-card p-7 transition-colors hover:border-foreground/20"
             >
-              <span className="flex size-11 items-center justify-center rounded-xl bg-secondary">
+              <span className="flex size-11 items-center justify-center rounded-md bg-secondary">
                 <p.icon className="size-5 text-primary" />
               </span>
               <h2 className="mt-5 text-xl font-semibold">{p.title}</h2>
@@ -84,6 +83,7 @@ function Home() {
             </div>
           ))}
         </div>
+
       </section>
     </>
   );

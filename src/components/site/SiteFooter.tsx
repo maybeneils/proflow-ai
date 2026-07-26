@@ -11,10 +11,10 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-surface/40">
+    <footer className="border-t border-border bg-surface">
       <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-2">
-          <span className="bg-accent-gradient flex size-7 items-center justify-center rounded-md">
+          <span className="flex size-7 items-center justify-center rounded-md bg-primary">
             <Bot className="size-4 text-primary-foreground" />
           </span>
           <span className="font-display font-semibold">AutomatePro</span>
