@@ -1,24 +1,90 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Bot, PhoneCall, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "AutomatePro — AI Automation for Growing Businesses" },
+      {
+        name: "description",
+        content:
+          "AI chatbots, AI voice agents, and custom websites that capture leads, answer customers, book appointments, and follow up automatically.",
+      },
+      { property: "og:title", content: "AutomatePro — AI Automation for Growing Businesses" },
+      {
+        property: "og:description",
+        content:
+          "Automate lead capture, customer communication, scheduling, and follow-ups with AI.",
+      },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const pillars = [
+  {
+    icon: Bot,
+    title: "AI Chatbots",
+    body: "Always-on chat that answers questions, qualifies leads, and books them in.",
+  },
+  {
+    icon: PhoneCall,
+    title: "AI Voice Agents",
+    body: "Natural phone agents that pick up every call and never miss an opportunity.",
+  },
+  {
+    icon: Globe,
+    title: "Custom Websites",
+    body: "Fast, conversion-focused sites built to feed your automation from day one.",
+  },
+];
+
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <section className="bg-hero-gradient border-b border-border/60">
+        <div className="container-page py-24 md:py-32">
+          <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-primary uppercase">
+            AI Automation Agency
+          </p>
+          <h1 className="max-w-4xl text-4xl font-bold text-balance md:text-6xl">
+            Put your lead capture, follow-ups, and scheduling{" "}
+            <span className="text-accent-gradient">on autopilot</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            AutomatePro helps businesses of every kind respond instantly, book more
+            appointments, and stay in touch with every customer &mdash; without adding headcount.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <Link to="/contact">
+                Book a call <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link to="/services">Explore services</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-20">
+        <div className="grid gap-6 md:grid-cols-3">
+          {pillars.map((p) => (
+            <div
+              key={p.title}
+              className="shadow-card rounded-2xl border border-border/60 bg-card p-7 transition-colors hover:border-primary/50"
+            >
+              <span className="flex size-11 items-center justify-center rounded-xl bg-secondary">
+                <p.icon className="size-5 text-primary" />
+              </span>
+              <h2 className="mt-5 text-xl font-semibold">{p.title}</h2>
+              <p className="mt-2 text-muted-foreground">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
