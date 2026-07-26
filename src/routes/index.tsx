@@ -43,19 +43,17 @@ const pillars = [
 function Home() {
   return (
     <>
-      <section className="border-b border-border bg-surface">
-        <div className="container-page py-24 md:py-32">
-          <p className="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-            AI Automation Agency
-          </p>
-          <h1 className="max-w-4xl text-4xl font-bold text-balance md:text-6xl">
+      <section className="bg-background">
+        <div className="container-page py-28 md:py-40">
+          <p className="label-eyebrow mb-6">AI Automation Agency</p>
+          <h1 className="max-w-4xl text-4xl font-bold text-balance md:text-6xl lg:text-7xl">
             Put your lead capture, follow-ups, and scheduling <span>on autopilot</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed font-light text-muted-foreground md:text-xl">
             AutomatePro helps businesses of every kind respond instantly, book more
             appointments, and stay in touch with every customer &mdash; without adding headcount.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-12 flex flex-wrap gap-4">
             <Button asChild size="lg">
               <Link to="/contact">
                 Book a call <ArrowRight className="size-4" />
@@ -68,20 +66,19 @@ function Home() {
         </div>
       </section>
 
-      <section className="container-page py-20">
-        <div className="grid gap-6 md:grid-cols-3">
-          {pillars.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-md border border-border bg-card p-7 transition-colors hover:border-foreground/20"
-            >
-              <span className="flex size-11 items-center justify-center rounded-md bg-secondary">
-                <p.icon className="size-5 text-primary" />
-              </span>
-              <h2 className="mt-5 text-xl font-semibold">{p.title}</h2>
-              <p className="mt-2 text-muted-foreground">{p.body}</p>
-            </div>
-          ))}
+      <section className="border-t border-border">
+        <div className="container-page py-24 md:py-32">
+          <div className="grid gap-16 md:grid-cols-3 md:gap-12">
+            {pillars.map((p) => (
+              <div key={p.title}>
+                <p.icon className="size-6 text-primary" strokeWidth={1.5} />
+                <h2 className="mt-6 text-xl font-bold">{p.title}</h2>
+                <p className="mt-3 leading-relaxed font-light text-muted-foreground">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         </div>
 
       </section>
