@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Bot } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -16,23 +16,24 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="flex size-8 items-center justify-center rounded-md bg-primary">
-            <Bot className="size-5 text-primary-foreground" />
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight">AutomatePro</span>
+      <div className="container-page flex h-18 items-center justify-between">
+        <Link
+          to="/"
+          className="text-lg font-bold tracking-tight uppercase"
+          onClick={() => setOpen(false)}
+        >
+          AutomatePro
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-10 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-foreground font-semibold" }}
+              activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground"
+              className="nav-link transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -48,7 +49,7 @@ export function SiteHeader() {
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="text-muted-foreground transition-colors hover:text-foreground md:hidden"
+          className="text-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -57,15 +58,15 @@ export function SiteHeader() {
 
       {open ? (
         <div className="border-t border-border bg-background md:hidden">
-          <nav className="container-page flex flex-col py-3">
+          <nav className="container-page flex flex-col py-4">
             {[...navItems, { to: "/contact", label: "Contact" } as const].map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                activeProps={{ className: "text-foreground font-semibold" }}
+                activeProps={{ className: "text-foreground" }}
                 inactiveProps={{ className: "text-muted-foreground" }}
-                className="py-2.5 text-sm font-medium"
+                className="nav-link py-3"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

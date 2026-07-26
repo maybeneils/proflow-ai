@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { Bot } from "lucide-react";
 
 const links = [
   { to: "/services", label: "Services" },
@@ -11,21 +10,16 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-surface">
-      <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-2">
-          <span className="flex size-7 items-center justify-center rounded-md bg-primary">
-            <Bot className="size-4 text-primary-foreground" />
-          </span>
-          <span className="font-display font-semibold">AutomatePro</span>
-        </div>
+    <footer className="border-t border-border bg-background">
+      <div className="container-page flex flex-col gap-8 py-16 md:flex-row md:items-center md:justify-between">
+        <span className="text-base font-bold tracking-tight uppercase">AutomatePro</span>
 
-        <nav className="flex flex-wrap gap-x-6 gap-y-2">
+        <nav className="flex flex-wrap gap-x-10 gap-y-3">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="nav-link text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </Link>
